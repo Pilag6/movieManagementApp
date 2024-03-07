@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "Oxdw5fZY2R",
+    "title": "The Godfather",
+    "year": "1972",
+    "director": "Francis Ford Coppola",
+    "cover": "https://bit.ly/49BNZIB",
+    "genre": "crime, drama"
+  },
+  {
+    "_id": "TP37fTDKuv",
+    "title": "The Godfather II",
+    "year": "1974",
+    "director": "Francis Ford Coppola",
+    "cover": "https://bit.ly/48Blny5",
+    "genre": "crime, drama"
+  },
+  {
+    "_id": "fam6q1Cz96",
+    "title": "Rocky",
+    "year": "1976",
+    "director": "John G. Avildsen",
+    "cover": "https://bit.ly/3IqhMrS",
+    "genre": "drama, sport"
+  },
+  {
+    "_id": "Jj589oupWd",
+    "title": "Dune: Part 2",
+    "year": "2024",
+    "director": "Denis Villeneuve",
+    "cover": "https://bit.ly/49ZV9q4",
+    "genre": "action, adventure, drama"
+  }
+]
