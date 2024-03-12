@@ -1,0 +1,30 @@
+### Get movies
+GET http://localhost:300/movies
+
+### Get movie by id
+GET http://localhost:300/movies/fam6q1Cz96
+
+### Create movie
+POST http://localhost:300/movies
+Content-Type: application/json
+
+{
+  "title": "The Godfather 8",
+  "year": "2039",
+  "director": "F. Coppolla Jr",
+  "cover": "https://bit.ly/3IqhMrS",
+  "genre": "drama, crime"
+}
+
+### Update part of the movie
+PATCH http://localhost:300/movies/fam6q1Cz9
+Content-Type: application/json
+
+{
+  "director": "Pila Gonzalez II"
+}
+
+### Update the whole movie
+
+### Delete movie
+DELETE http://localhost:300/movies/fam6q1Cz9

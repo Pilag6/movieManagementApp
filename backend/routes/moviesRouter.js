@@ -19,7 +19,7 @@ moviesRouter.get("/", getAllMovies);
 // READ each movie
 moviesRouter.get("/:id", getMoviesById);
 // UPDATE the movies
-moviesRouter.put("/:id", updateMovies);
+moviesRouter.patch("/:id", updateMovies);
 // DELETE the movies
 moviesRouter.delete("/:id", deleteMovies)
 

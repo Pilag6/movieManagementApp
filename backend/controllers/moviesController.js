@@ -20,89 +20,157 @@ let movies = [
 
 // CREATE the movies
 const createMovies = async (req, res) => {
-    // Read the movies from the file and store them in the movies array
-    movies = await readMoviesFromFile();
+    try {
+        // Get the title, year, director, cover, genre
+        const { title, year, director, cover, genre } = req.body;
 
-    // Get the title, year, director, cover, genre
-    const { title, year, director, cover, genre } = req.body;
+        // Handling error in case that there are some empty fields
+        if (!title || !year || !director || !cover || !genre) {
+            return res.status(400).send({ error: "Missing required fields" });
+        }
 
-    // Create a new movie with unique id
-    const newMovie = { _id: objectId(), title, year, director, cover, genre };
+        // Read the movies from the file and store them in the movies array
+        movies = await readMoviesFromFile();
 
-    // Add the new movie to tge movies array
-    movies.push(newMovie);
+        // Create a new movie with unique id
+        const newMovie = {
+            _id: objectId(),
+            title,
+            year,
+            director,
+            cover,
+            genre,
+        };
 
-    // Write the created movies in the movies array
-    await writeMoviesToFile(movies);
+        // Add the new movie to the movies array
+        movies.push(newMovie);
 
-    // Send the new movie back to the client as a JSON response
-    res.json(newMovie);
+        // Write the created movies in the movies array
+        await writeMoviesToFile(movies);
+
+        // Send the new movie back to the client as a JSON response
+        res.status(201).json(newMovie);
+    } catch (error) {
+        // Catching the error in case that there are some problem in the server
+        res.status(500).send({ message: error.message });
+    }
 };
 // READ the movies
 const getAllMovies = async (req, res) => {
-    // Read the movies from the file and store them in the movies array
-    movies = await readMoviesFromFile();
+    try {
+        // Read the movies from the file and store them in the movies array
+        movies = await readMoviesFromFile();
 
-    res.json(movies);
+        // Handling error in case that there aren't movies in our DB
+        if (movies.length === 0 || !movies) {
+            return res
+                .status(400)
+                .send({ error: "No movies in our Database (for now)" });
+        }
+
+        res.status(200).json(movies);
+    } catch (error) {
+        // Catching the error in case that there are some problem in the server
+        res.status(500).send({ message: error.message });
+    }
 };
 // READ each movie
 const getMoviesById = async (req, res) => {
-    // Read the movies from the file and store them in the movies array
-    movies = await readMoviesFromFile();
+    try {
+        // Read the movies from the file and store them in the movies array
+        movies = await readMoviesFromFile();
 
-    // Get the movie from the request params
-    const id = req.params.id;
+        // Get the movie from the request params
+        const id = req.params.id;
 
-    // Find the movie with matching id
-    const movie = movies.find((item) => item._id === id);
+        // Find the movie with matching id
+        const movie = movies.find((item) => item._id === id);
 
-    // Send the individual movie back to the client as a JSON response
-    res.json(movie);
+        if (!movie) {
+            return res
+                .status(400)
+                .send({ error: `Movie (id: ${id}) not found` });
+        }
+
+        // Send the individual movie back to the client as a JSON response
+        res.json(movie);
+    } catch (error) {
+        // Catching the error in case that there are some problem in the server
+        res.status(500).send({ message: error.message });
+    }
 };
 // UPDATE the movies
 const updateMovies = async (req, res) => {
-    // Read the movies from the file and store them in the movies array
-    movies = await readMoviesFromFile();
+    try {
+        // Read the movies from the file and store them in the movies array
+        movies = await readMoviesFromFile();
 
-    // Get the title, year, director, cover, genre
-    const { title, year, director, cover, genre } = req.body;
+        // Get the title, year, director, cover, genre
+        const { title, year, director, cover, genre } = req.body;
 
-    // Get the movie from the request params
-    const id = req.params.id;
+        // Get the movie from the request params
+        const id = req.params.id;
 
-    // Find the index of the movie with matching id
-    const movieIndex = movies.findIndex((item) => item._id === id);
+        // Find the index of the movie with matching id
+        const movieIndex = movies.findIndex((item) => item._id === id);
 
-    // Update the movie at the found index
-    movies[movieIndex] = { ...movies[movieIndex], title, year, director, cover, genre }
+        if (movieIndex === -1) {
+            return res
+                .status(400)
+                .send({ error: `Movie (id: ${id}) not found` });
+        }
 
-    // Re-write the updated movies array back to the JSON file
-    await writeMoviesToFile(movies)
+        // Update the movie at the found index
+        movies[movieIndex] = {
+            ...movies[movieIndex],
+            title: title ? title : movies[movieIndex].title,
+            year: year ? year : movies[movieIndex].year,
+            director: director ? director : movies[movieIndex].director,
+            cover: cover ? cover : movies[movieIndex].cover,
+            genre: genre ? genre : movies[movieIndex].genre,
+        };
 
-    // Send the individual movie back to the client as a JSON response
-    res.json(movies);
+        // Re-write the updated movies array back to the JSON file
+        await writeMoviesToFile(movies);
+
+        // Send the individual movie back to the client as a JSON response
+        res.status(201).json(movies[movieIndex]);
+    } catch (error) {
+        // Catching the error in case that there are some problem in the server
+        res.status(500).send({ message: error.message });
+    }
 };
 // DELETE the movies
 const deleteMovies = async (req, res) => {
-    // Read the movies from the file and store them in the movies array
-    movies = await readMoviesFromFile();
+    try {
+        // Read the movies from the file and store them in the movies array
+        movies = await readMoviesFromFile();
 
-    // Get the movie from the request params
-    const id = req.params.id;
+        // Get the movie from the request params
+        const id = req.params.id;
 
-    // Find the index of the movie with matching id
-    const movieIndex = movies.findIndex((item) => item._id === id);
+        // Find the index of the movie with matching id
+        const movieIndex = movies.findIndex((item) => item._id === id);
 
-    // Remove the movie at the found index from the movie array
-    movies = movies.filter((movie) => movie._id !== id)
-    // movies.splice(movieIndex, 1)
+        if (movieIndex === -1) {
+            return res
+                .status(400)
+                .send({ error: `Movie (id: ${id}) not found` });
+        }
 
-    // Re-write the updated movies array back to the JSON file
-    await writeMoviesToFile(movies)
+        // Remove the movie at the found index from the movie array
+        movies = movies.filter((movie) => movie._id !== id);
+        // movies.splice(movieIndex, 1)
 
-    // Send the individual movie back to the client as a JSON response
-    res.json({ message: "Movie Deleted" });
+        // Re-write the updated movies array back to the JSON file
+        await writeMoviesToFile(movies);
 
+        // Send the individual movie back to the client as a JSON response
+        res.status(200).json({ message: "Movie Deleted" });
+    } catch (error) {
+        // Catching the error in case that there are some problem in the server
+        res.status(500).send({ message: error.message });
+    }
 };
 
 export {
