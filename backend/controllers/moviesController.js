@@ -70,7 +70,7 @@ const updateMovies = async (req, res) => {
     // Get the movie from the request params
     const id = req.params.id;
 
-    // Find the index of the movie with matchinf id
+    // Find the index of the movie with matching id
     const movieIndex = movies.findIndex((item) => item._id === id);
 
     // Update the movie at the found index
@@ -86,6 +86,23 @@ const updateMovies = async (req, res) => {
 const deleteMovies = async (req, res) => {
     // Read the movies from the file and store them in the movies array
     movies = await readMoviesFromFile();
+
+    // Get the movie from the request params
+    const id = req.params.id;
+
+    // Find the index of the movie with matching id
+    const movieIndex = movies.findIndex((item) => item._id === id);
+
+    // Remove the movie at the found index from the movie array
+    movies = movies.filter((movie) => movie._id !== id)
+    // movies.splice(movieIndex, 1)
+
+    // Re-write the updated movies array back to the JSON file
+    await writeMoviesToFile(movies)
+
+    // Send the individual movie back to the client as a JSON response
+    res.json({ message: "Movie Deleted" });
+
 };
 
 export {

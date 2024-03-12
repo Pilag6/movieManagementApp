@@ -21,6 +21,6 @@ moviesRouter.get("/:id", getMoviesById);
 // UPDATE the movies
 moviesRouter.put("/:id", updateMovies);
 // DELETE the movies
-moviesRouter.delete("/:id ", deleteMovies);
+moviesRouter.delete("/:id", deleteMovies)
 
 export default moviesRouter;
