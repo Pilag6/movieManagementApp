@@ -3,7 +3,7 @@ import express from "express";
 import moviesRouter from "./routes/moviesRouter.js";
 
 const app = express();
-const PORT = 4321;
+const PORT = 300;
 
 // Middlewares that accepts urlencoded from data request
 app.use(express.urlencoded({ extended: true }));
