@@ -1,10 +1,18 @@
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv"
 
 import moviesRouter from "./routes/moviesRouter.js";
+import connectDB from "./config/connectDB.js";
+
+// Managing the .env file
+dotenv.config()
+
+// Connect our DB
+connectDB()
 
 const app = express();
-const PORT = 300;
+const {PORT} = process.env;
 
 // Middleware that allows brosers to accept data from this server
 app.use(cors())
