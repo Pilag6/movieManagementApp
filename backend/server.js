@@ -6,12 +6,12 @@ import moviesRouter from "./routes/moviesRouter.js";
 const app = express();
 const PORT = 300;
 
+// Middleware that allows brosers to accept data from this server
+app.use(cors())
 // Middlewares that accepts urlencoded from data request
 app.use(express.urlencoded({ extended: true }));
 // Middleware that accepts json format data request
 app.use(express.json());
-// Middleware that allows brosers to accept data from this server
-app.use(cors())
 
 // ROUTERS
 app.use("/movies", moviesRouter)
