@@ -1,10 +1,80 @@
 [
     {
-        "_id": "Jj589oupWd",
         "title": "Dune: Part 2",
-        "year": "2024",
+        "year": 2024,
         "director": "Denis Villeneuve",
-        "cover": "https://bit.ly/49ZV9q4",
+        "cover": "https://bit.ly/3TV83AA",
         "genre": ["action", "adventure", "drama"]
+    },
+    {
+        "title": "The Batman",
+        "year": 2022,
+        "director": "Matt Reeves",
+        "cover": "https://bit.ly/3TGrTya",
+        "genre": ["action", "crime", "drama"]
+    },
+    {
+        "title": "Spider-Man: No Way Home",
+        "year": 2021,
+        "director": "Jon Watts",
+        "cover": "https://bit.ly/4akGoye",
+        "genre": ["action", "adventure", "sci-fi"]
+    },
+    {
+        "title": "The Matrix Resurrections",
+        "year": 2021,
+        "director": "Lana Wachowski",
+        "cover": "https://bit.ly/49avXfE",
+        "genre": ["action", "sci-fi"]
+    },
+    {
+        "title": "No Time to Die",
+        "year": 2021,
+        "director": "Cary Joji Fukunaga",
+        "cover": "https://bit.ly/3xbznkW",
+        "genre": ["action", "adventure", "thriller"]
+    },
+    {
+        "title": "Inception",
+        "year": 2010,
+        "director": "Christopher Nolan",
+        "cover": "https://bit.ly/3VuDzqd",
+        "genre": ["action", "adventure", "sci-fi"]
+    },
+    {
+        "title": "The Shawshank Redemption",
+        "year": 1994,
+        "director": "Frank Darabont",
+        "cover": "https://bit.ly/4aoUeiU",
+        "genre": ["drama"]
+    },
+    {
+        "title": "The Godfather",
+        "year": 1972,
+        "director": "Francis Ford Coppola",
+        "cover": "https://bit.ly/4cA5yuv",
+        "genre": ["crime", "drama"]
+    },
+    {
+        "title": "The Dark Knight",
+        "year": 2008,
+        "director": "Christopher Nolan",
+        "cover": "https://bit.ly/3xbIh1S",
+        "genre": ["action", "crime", "drama"]
+    },
+    {
+        "title": "Pulp Fiction",
+        "year": 1994,
+        "director": "Quentin Tarantino",
+        "cover": "https://bit.ly/3q9n1kg",
+        "genre": ["crime", "drama"]
+    },
+    {
+        "title": "Interstellar",
+        "year": 2014,
+        "director": "Christopher Nolan",
+        "cover": "https://bit.ly/3D2ifKh",
+        "genre": ["adventure", "drama", "sci-fi"]
     }
 ]
+

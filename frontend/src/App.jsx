@@ -6,6 +6,7 @@ function App() {
     const [movies, setMovies] = useState({
         movies: []
     });
+
     useEffect(() => {
         const fetchMovies = async () => {
             try {
@@ -30,13 +31,13 @@ function App() {
             <h1>All the movies here</h1>
             {movies.movies.map((movie) => {
                 return (
-                    <>
-                        <h2 key={movie._id}>{movie.title}</h2>
+                    <div key={movie._id}>
+                        <h2>{movie.title}</h2>
                         <h3>{movie.director}</h3>
                         <p>Year: {movie.year}</p>
                         <p>Genre: {movie.genre.join(", ").toUpperCase()}</p>
                         <img src={movie.cover} alt="" />
-                    </>
+                    </div>
                 );
             })}
         </>

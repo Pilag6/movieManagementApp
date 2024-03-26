@@ -6,6 +6,7 @@ import {
     getMoviesById,
     updateMovies,
     deleteMovies,
+    deleteAllMovies
 } from "../controllers/moviesController.js";
 
 const moviesRouter = Router();
@@ -22,5 +23,7 @@ moviesRouter.get("/:id", getMoviesById);
 moviesRouter.patch("/:id", updateMovies);
 // DELETE the movies
 moviesRouter.delete("/:id", deleteMovies)
+// DELETE all movies
+moviesRouter.delete("/", deleteAllMovies)
 
 export default moviesRouter;

@@ -2,7 +2,9 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv"
 
+// Importing the moviesRouter
 import moviesRouter from "./routes/moviesRouter.js";
+// Importing the connectDB function
 import connectDB from "./config/connectDB.js";
 
 // Managing the .env file
